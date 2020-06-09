@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gke-test
+  labels:
+    app: gke-test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gke-test
+  template:
+    metadata:
+      labels:
+        app: gke-test
+    spec:
+      containers:
+        - name: gke-test
+          image: $REGISTRY_HOSTNAME/$GKE_PROJECT/$IMAGE:${GITHUB_SHA}
