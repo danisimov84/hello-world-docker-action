@@ -12,7 +12,7 @@ name: Build and Deploy to GKE
 
 on:
   release:
-    types: [created]
+    types: [push]
 
 # Environment variables available to all jobs and steps in this workflow
 env:
@@ -20,7 +20,7 @@ env:
   GKE_EMAIL: ${{ secrets.GKE_EMAIL }}
   GITHUB_SHA: ${{ github.sha }}
   GKE_ZONE: europe-west1-d
-  GKE_CLUSTER: glow
+  GKE_CLUSTER: cluster-1
   IMAGE: gke-test
   REGISTRY_HOSTNAME: gcr.io
   DEPLOYMENT_NAME: gke-test
@@ -32,12 +32,12 @@ jobs:
     steps:
 
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/hello-world-docker-action@v1
 
     # Setup gcloud CLI
     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       with:
-        version: '270.0.0'
+        version: '295.0.0'
         service_account_email: ${{ secrets.GKE_EMAIL }}
         service_account_key: ${{ secrets.GKE_KEY }}
 
