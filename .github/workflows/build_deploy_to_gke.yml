@@ -47,14 +47,14 @@ jobs:
       
     # Build the Docker image
     - name: Build
-      # uses: actions/checkout@v1
-      # with:
-      #   args: build -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT"/"$IMAGE":"$GITHUB_SHA" .
-      run: |        
-        docker build -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT"/"$IMAGE":"$GITHUB_SHA" \
-          --build-arg GITHUB_SHA="$GITHUB_SHA" \
-          --build-arg GITHUB_REF="$GITHUB_REF" \
-          .
+      id: hello
+      uses: actions/hello-world-docker-action@v1
+      with:
+        who-to-greet: 'Mona the Octocat'
+      # run: |        
+      #   docker build -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT"/"$IMAGE":"$GITHUB_SHA" \
+      #     --build-arg GITHUB_SHA="$GITHUB_SHA" \
+      #     --build-arg GITHUB_REF="$GITHUB_REF" .
 
     # Push the Docker image to Google Container Registry
     - name: Publish
