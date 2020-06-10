@@ -47,7 +47,7 @@ jobs:
       
     # Build the Docker image
     - name: Build
-      uses: actions/docker/cli@master
+      uses: actions/checkout@v1
       with:
         args: build -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT"/"$IMAGE":"$GITHUB_SHA" .
 
