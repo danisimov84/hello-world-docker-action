@@ -47,17 +47,14 @@ jobs:
       
     # Build the Docker image
     - name: Build
-      uses: actions/checkout@v1
-      with:
-        args: build -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT"/"$IMAGE":"$GITHUB_SHA" .
-
-      # uses: docker/build-push-action@v1
+      # uses: actions/checkout@v1
       # with:
-      #   path: .
-      # run: |        
-      #   docker build -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT"/"$IMAGE":"$GITHUB_SHA" \
-      #     --build-arg GITHUB_SHA="$GITHUB_SHA" \
-      #     --build-arg GITHUB_REF="$GITHUB_REF" .
+      #   args: build -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT"/"$IMAGE":"$GITHUB_SHA" .
+      run: |        
+        docker build -t "$REGISTRY_HOSTNAME"/"$GKE_PROJECT"/"$IMAGE":"$GITHUB_SHA" \
+          --build-arg GITHUB_SHA="$GITHUB_SHA" \
+          --build-arg GITHUB_REF="$GITHUB_REF" \
+          .
 
     # Push the Docker image to Google Container Registry
     - name: Publish
