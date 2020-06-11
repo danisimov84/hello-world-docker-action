@@ -22,6 +22,7 @@ env:
   IMAGE: gke-test
   REGISTRY_HOSTNAME: gcr.io
   DEPLOYMENT_NAME: gke-test
+  NODE_ENV: production
 
 jobs:
   setup-build-publish-deploy:
