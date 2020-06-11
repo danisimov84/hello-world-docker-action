@@ -5,7 +5,7 @@ metadata:
   labels:
     app: gke-test
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: gke-test
@@ -16,4 +16,5 @@ spec:
     spec:
       containers:
         - name: gke-test
-          image: REGISTRY_HOSTNAME/k8s-gl-training/IMAGE:GITHUB_SHA
+          # image: REGISTRY_HOSTNAME/k8s-gl-training/IMAGE:GITHUB_SHA
+          image: "$REGISTRY_HOSTNAME"/"$GKE_PROJECT"/"$IMAGE":"$GITHUB_SHA"
