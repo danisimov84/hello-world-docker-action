@@ -4,3 +4,4 @@
     namespace: github-test
     resources:
       - deployment.yaml
+      - namespace.yaml
